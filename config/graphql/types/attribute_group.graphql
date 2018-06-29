@@ -1,8 +1,0 @@
-type AttributeGroup {
-    id: Int!
-    name: String!
-    application_id: Int
-    application_ids: String
-    level: [CategoryLevel]!
-    is_advanced: Boolean
-}

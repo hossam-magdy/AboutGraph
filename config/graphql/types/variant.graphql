@@ -1,4 +1,0 @@
-type Variant {
-    id: Int!
-    product_id: Int
-}

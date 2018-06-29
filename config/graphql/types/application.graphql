@@ -1,4 +1,0 @@
-type Application {
-    id: Int!
-    name: String!
-}

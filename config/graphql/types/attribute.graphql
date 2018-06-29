@@ -1,6 +1,0 @@
-type Attribute {
-    id: Int!
-    name: String!
-    identifier: String!
-    attribute_group_id: Int!
-}
