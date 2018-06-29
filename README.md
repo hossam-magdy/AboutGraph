@@ -1,5 +1,11 @@
+# About Graph
 
+## Initialization:
+- Update `DATABASE_URL` in `.env`
+- `bin/console doctrine:database:create`
+- `bin/console doctrine:migration:migrate`
 
+=======================
 
 #### Next for OverblogGraphQLBundle
 1. Define your schema, read documentation https://github.com/overblog/GraphQLBundle/blob/master/Resources/doc/definitions/index.md
