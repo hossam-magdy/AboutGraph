@@ -16,6 +16,16 @@ class Variant
      */
     private $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Product")
+     */
+    private $product;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Attribute")
+     */
+    private $attributes;
+
     public function getId()
     {
         return $this->id;

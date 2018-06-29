@@ -21,6 +21,11 @@ class Attribute
      */
     private $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AttributeGroup")
+     */
+    private $attribute_group;
+
     public function getId()
     {
         return $this->id;

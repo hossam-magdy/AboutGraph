@@ -21,6 +21,16 @@ class Product
      */
     private $name;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Attribute")
+     */
+    private $attributes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application")
+     */
+    private $application;
+
     public function getId()
     {
         return $this->id;

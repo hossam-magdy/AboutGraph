@@ -21,6 +21,16 @@ class Category
      */
     private $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Category")
+     */
+    private $parent;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Application")
+     */
+    private $application;
+
     public function getId()
     {
         return $this->id;
