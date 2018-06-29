@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Type;
+namespace App\GraphQL\Type;
 
 use Folklore\GraphQL\Support\Type as GraphQLType;
 use GraphQL\Type\Definition\Type;

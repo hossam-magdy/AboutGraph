@@ -124,7 +124,7 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'application' => \App\Query\ApplicationQuery::class,
+                'application' => \App\GraphQL\Query\ApplicationQuery::class,
             ],
             'mutation' => [
 
@@ -181,7 +181,7 @@ return [
      * ]
      */
     'types' => [
-        'Application' => \App\Type\ApplicationType::class
+        'Application' => \App\GraphQL\Type\ApplicationType::class,
     ],
 
     /*

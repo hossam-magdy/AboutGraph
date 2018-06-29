@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Query;
+namespace App\GraphQL\Query;
 
-use App\Application;
+use App\Models\Application;
 use Folklore\GraphQL\Support\Query;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
