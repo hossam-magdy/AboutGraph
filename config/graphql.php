@@ -126,6 +126,7 @@ return [
             'query' => [
                 'application' => \App\GraphQL\Query\ApplicationQuery::class,
                 'product' => \App\GraphQL\Query\ProductQuery::class,
+                'attribute' => \App\GraphQL\Query\AttributeQuery::class,
             ],
             'mutation' => [
             ],
@@ -183,6 +184,7 @@ return [
     'types' => [
         'Application' => \App\GraphQL\Type\ApplicationType::class,
         'Product' => \App\GraphQL\Type\ProductType::class,
+        'Attribute' => \App\GraphQL\Type\AttributeType::class,
     ],
 
     /*

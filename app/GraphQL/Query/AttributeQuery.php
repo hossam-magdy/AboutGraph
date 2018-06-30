@@ -8,15 +8,15 @@ use GraphQL;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
-class ProductQuery extends Query
+class AttributeQuery extends Query
 {
     protected $attributes = [
-        'name' => 'products'
+        'name' => 'attributes'
     ];
 
     public function type()
     {
-        return Type::listOf(GraphQL::type('Product'));
+        return Type::listOf(GraphQL::type('Attribute'));
     }
 
     public function args()
@@ -24,7 +24,6 @@ class ProductQuery extends Query
         return [
             'id' => ['name' => 'id', 'type' => Type::int()],
             'name' => ['name' => 'name', 'type' => Type::string()],
-            'attributes' => ['name' => 'attributes', 'type' => Type::listOf(GraphQL::type('Attribute'))],
         ];
     }
 
@@ -40,10 +39,8 @@ class ProductQuery extends Query
         }
 
         $fields = $info->getFieldSelection(); // TODO use $depth
-        foreach ($fields as $field => $keys) {
-            if ($field === 'attributes') {
-                $query->with('attributes');
-            }
+        if (in_array('attributes', $fields)) {
+            $query->with('attributes');
         }
 
         return $query->get();

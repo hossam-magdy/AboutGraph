@@ -7,6 +7,7 @@ use Folklore\GraphQL\Support\Query;
 use GraphQL;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
+use Illuminate\Support\Facades\DB;
 
 class ApplicationQuery extends Query
 {
@@ -24,23 +25,40 @@ class ApplicationQuery extends Query
         return [
             'id' => ['name' => 'id', 'type' => Type::int()],
             'name' => ['name' => 'name', 'type' => Type::string()],
-            'product' => ['name' => 'product', 'type' => Type::listOf(GraphQL::type('Product'))],
+            'products' => ['name' => 'products', 'type' => Type::listOf(GraphQL::type('Product'))],
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        $fields = $info->getFieldSelection(); // TODO use $depth
-        $applications = Application::query();
-        if (in_array('products', $fields)) {
-            $applications->with('products');
-        }
+//        dump('ResolvingApplicationQuery');
+        $query = Application::query();
+
         if (isset($args['id'])) {
-            return $applications->where('id', $args['id'])->get();
+            $query->where('id', $args['id']);
         } else if (isset($args['name'])) {
-            return $applications->where('name', $args['name'])->get();
-        } else {
-            return $applications->get();
+            $query->where('name', 'LIKE', '%'.$args['name'].'%');
         }
+
+        $fields = $info->getFieldSelection(2); // TODO update $depth for best fit
+//        if (in_array('products', $fields)) {
+//            $query->with('products');
+//        }
+
+        foreach ($fields as $field => $keys) {
+            if ($field === 'products') {
+//                foreach ($keys as $field => $keys) {
+//
+//                }
+//                $query->leftJoin('application_product AS ap', 'ap.application_id', '=', 'a.id');
+//                $query->leftJoin('products AS p', 'ap.product_id', '=', 'p.id');
+//                dump($keys);
+
+//                $query->addSelect(DB::raw())
+                $query->with('products');
+            }
+        }
+
+        return $query->get();
     }
 }

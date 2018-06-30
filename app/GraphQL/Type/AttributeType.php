@@ -3,17 +3,16 @@
 namespace App\GraphQL\Type;
 
 use Folklore\GraphQL\Support\Type as GraphQLType;
-use GraphQL;
 use GraphQL\Type\Definition\Type;
 
 /**
  * @author Hossam Magdy <hossam.magdy@aboutyou.de>
  */
-class ProductType extends GraphQLType
+class AttributeType extends GraphQLType
 {
     protected $attributes = [
-        'name' => 'Product',
-        'description' => 'A product'
+        'name' => 'Attribute',
+        'description' => 'An attribute'
     ];
 
     /*
@@ -30,10 +29,7 @@ class ProductType extends GraphQLType
             ],
             'name' => [
                 'type' => Type::string(),
-            ],
-            'attributes' => [
-                'type' => Type::listOf(GraphQL::type('Attribute')),
-            ],
+            ]
         ];
     }
 
