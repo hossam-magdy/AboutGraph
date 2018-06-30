@@ -42,24 +42,10 @@ class ApplicationQuery extends Query
             $query->where('name', 'LIKE', '%'.$args['name'].'%');
         }
 
-        $fields = $info->getFieldSelection(3); // TODO update $depth for best fit
+        $fields = $info->getFieldSelection(1);
         foreach ($fields as $field0 => $keys) {
             if ($field0 === 'products') {
                 $query->with('products');
-//                foreach ($keys as $field1 => $keys1) {
-////                $query->leftJoin('application_product AS ap', 'ap.application_id', '=', 'a.id');
-////                $query->leftJoin('products AS p', 'ap.product_id', '=', 'p.id');
-////                dump($keys);
-//
-////                $query->addSelect(DB::raw())
-//                    $query->with(['products' => function (BelongsToMany $products) use ($keys1) {
-//                        $products->where('live', '=', 1);
-//                        if (!empty($keys1['name'])) {
-//                            $products->where('name', 'LIKE', '%'.$keys1['name'].'%');
-//                        }
-////                    $products->where('live','=', 1); // TODO: dynamic conditions
-//                    }]);
-//                }
             }
         }
 
