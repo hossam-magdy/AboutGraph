@@ -34,9 +34,11 @@ class AttributeGroupQuery extends Query
 
         if (isset($args['id'])) {
             $query->where('id', $args['id'])->get();
-        } else if (isset($args['name'])) {
+        }
+        if (isset($args['name'])) {
             $query->where('name', 'LIKE', '%'.$args['name'].'%')->get();
-        } else if (isset($args['frontend_name'])) {
+        }
+        if (isset($args['frontend_name'])) {
             $query->where('frontend_name', 'LIKE', '%'.$args['frontend_name'].'%')->get();
         }
 

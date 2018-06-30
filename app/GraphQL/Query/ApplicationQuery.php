@@ -34,7 +34,8 @@ class ApplicationQuery extends Query
 
         if (isset($args['id'])) {
             $query->where('id', $args['id']);
-        } else if (isset($args['name'])) {
+        }
+        if (isset($args['name'])) {
             $query->where('name', 'LIKE', '%'.$args['name'].'%');
         }
 

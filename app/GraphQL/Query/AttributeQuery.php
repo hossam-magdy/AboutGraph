@@ -24,18 +24,25 @@ class AttributeQuery extends Query
         return [
             'id' => ['name' => 'id', 'type' => Type::int()],
             'name' => ['name' => 'name', 'type' => Type::string()],
+            'identifier' => ['name' => 'identifier', 'type' => Type::string()],
+            'attribute_group_level' => ['name' => 'attribute_group_level', 'type' => Type::string()],
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
 //        dump('ResolvingAttributeQuery');
-        $query = Attribute::query();
+        $query = Attribute::query()->select(['attributes.*']); // to avoid select attGr.id in case if "attribute_group_level" argument
 
         if (isset($args['id'])) {
-            $query->where('id', $args['id']);
-        } else if (isset($args['name'])) {
-            $query->where('name', 'LIKE', '%'.$args['name'].'%');
+            $query->where('attributes.id', $args['id']);
+        }
+        if (isset($args['name'])) {
+            $query->where('attributes.name', 'LIKE', '%'.$args['name'].'%');
+        }
+        if (isset($args['attribute_group_level'])) {
+            $query->leftJoin('attribute_groups AS ag', 'ag.id', '=', 'attributes.attribute_group_id');
+            $query->where('ag.level', '=', $args['attribute_group_level']);
         }
 
         $fields = $info->getFieldSelection();
