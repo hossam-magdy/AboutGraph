@@ -27,9 +27,15 @@ class ProductType extends GraphQLType
     public function fields()
     {
         return [
-            'id' => ['type' => Type::nonNull(Type::int())],
-            'name' => ['type' => Type::string()],
-            'live' => ['type' => Type::boolean()],
+            'id' => [
+                'type' => Type::nonNull(Type::int()),
+            ],
+            'name' => [
+                'type' => Type::string(),
+            ],
+            'live' => [
+                'type' => Type::boolean(),
+            ],
             'attributes' => [
                 'type' => Type::listOf(GraphQL::type('Attribute')),
                 'args' => [

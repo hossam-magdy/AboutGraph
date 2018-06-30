@@ -9,10 +9,10 @@ use GraphQL\Type\Definition\Type;
 /**
  * @author Hossam Magdy <hossam.magdy@aboutyou.de>
  */
-class AttributeType extends GraphQLType
+class AttributeGroupType extends GraphQLType
 {
     protected $attributes = [
-        'name' => 'Attribute',
+        'name' => 'Attribute Group',
         'description' => 'An attribute'
     ];
 
@@ -28,24 +28,21 @@ class AttributeType extends GraphQLType
             'id' => [
                 'type' => Type::nonNull(Type::int()),
             ],
-            'name' => [
-                'type' => Type::string(),
-            ],
             'attribute_group_id' => [
                 'type' => Type::nonNull(Type::int()),
             ],
-            'attribute_group' => [
-                'type' => GraphQL::type('AttributeGroup'),
+            'name' => [
+                'type' => Type::string(),
+            ],
+            'frontend_name' => [
+                'type' => Type::string(),
+            ],
+            'attributes' => [
+                'type' => Type::listOf(GraphQL::type('Attribute')),
+                'args' => [
+                    'name' => ['type' => Type::string()],
+                ],
             ],
         ];
     }
-
-    protected function resolveAttributeGroupField($root, $args)
-    {
-        // TODO: all fields/columns are queried from db regardless the requested/predefined fields
-//        dump('resolveAttributeGroupField', $root);
-        return $root->attributeGroup;
-    }
-
-
 }

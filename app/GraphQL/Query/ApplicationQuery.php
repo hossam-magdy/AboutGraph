@@ -24,10 +24,6 @@ class ApplicationQuery extends Query
         return [
             'id' => ['name' => 'id', 'type' => Type::int()],
             'name' => ['name' => 'name', 'type' => Type::string()],
-            'products' => [
-                'name' => 'products',
-                'type' => Type::listOf(GraphQL::type('Product')),
-            ],
         ];
     }
 

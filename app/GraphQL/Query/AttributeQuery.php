@@ -2,7 +2,7 @@
 
 namespace App\GraphQL\Query;
 
-use App\Models\Product;
+use App\Models\Attribute;
 use Folklore\GraphQL\Support\Query;
 use GraphQL;
 use GraphQL\Type\Definition\ResolveInfo;
@@ -29,18 +29,20 @@ class AttributeQuery extends Query
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-//        dump('ResolvingProductQuery');
-        $query = Product::query();
+//        dump('ResolvingAttributeQuery');
+        $query = Attribute::query();
 
         if (isset($args['id'])) {
-            $query->where('id', $args['id'])->get();
+            $query->where('id', $args['id']);
         } else if (isset($args['name'])) {
-            $query->where('name', 'LIKE', '%'.$args['name'].'%')->get();
+            $query->where('name', 'LIKE', '%'.$args['name'].'%');
         }
 
-        $fields = $info->getFieldSelection(); // TODO use $depth
-        if (in_array('attributes', $fields)) {
-            $query->with('attributes');
+        $fields = $info->getFieldSelection();
+        foreach ($fields as $field => $key) {
+            if ($field === 'attribute_group') {
+                $query->with('attributeGroup');
+            }
         }
 
         return $query->get();

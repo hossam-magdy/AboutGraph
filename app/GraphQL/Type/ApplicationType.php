@@ -27,9 +27,15 @@ class ApplicationType extends GraphQLType
     public function fields()
     {
         return [
-            'id' => ['type' => Type::nonNull(Type::int())],
-            'name' => ['type' => Type::string()],
-            'url' => ['type' => Type::string()],
+            'id' => [
+                'type' => Type::nonNull(Type::int()),
+            ],
+            'name' => [
+                'type' => Type::string(),
+            ],
+            'url' => [
+                'type' => Type::string(),
+            ],
             'logo_url' => ['type' => Type::string()],
             'products' => [
                 'type' => Type::listOf(GraphQL::type('Product')),

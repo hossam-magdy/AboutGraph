@@ -2,21 +2,21 @@
 
 namespace App\GraphQL\Query;
 
-use App\Models\Product;
+use App\Models\AttributeGroup;
 use Folklore\GraphQL\Support\Query;
 use GraphQL;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
-class ProductQuery extends Query
+class AttributeGroupQuery extends Query
 {
     protected $attributes = [
-        'name' => 'products'
+        'name' => 'attribute_groups'
     ];
 
     public function type()
     {
-        return Type::listOf(GraphQL::type('Product'));
+        return Type::listOf(GraphQL::type('AttributeGroup'));
     }
 
     public function args()
@@ -24,26 +24,25 @@ class ProductQuery extends Query
         return [
             'id' => ['name' => 'id', 'type' => Type::int()],
             'name' => ['name' => 'name', 'type' => Type::string()],
-            'live' => ['name' => 'url', 'type' => Type::boolean()],
+            'frontend_name' => ['name' => 'frontend_name', 'type' => Type::string()],
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-//        dump('ResolvingProductQuery');
-        $query = Product::query()->where('live', '=', 1);
+        $query = AttributeGroup::query();
 
         if (isset($args['id'])) {
             $query->where('id', $args['id'])->get();
         } else if (isset($args['name'])) {
             $query->where('name', 'LIKE', '%'.$args['name'].'%')->get();
+        } else if (isset($args['frontend_name'])) {
+            $query->where('frontend_name', 'LIKE', '%'.$args['frontend_name'].'%')->get();
         }
 
         $fields = $info->getFieldSelection(); // TODO use $depth
-        foreach ($fields as $field => $keys) {
-            if ($field === 'attributes') {
-                $query->with('attributes');
-            }
+        if (in_array('attributes', $fields)) {
+            $query->with('attributes');
         }
 
         return $query->get();
