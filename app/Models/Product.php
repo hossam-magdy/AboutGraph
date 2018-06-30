@@ -13,7 +13,7 @@ class Product extends Model
 {
     public function applications()
     {
-        return $this->belongsToMany(Application::class);
+        return $this->belongsToMany(Application::class, 'application_products');
     }
 
     public function attributes()

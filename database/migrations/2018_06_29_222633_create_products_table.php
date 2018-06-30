@@ -16,8 +16,8 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->tinyInteger('live');
-            $table->tinyInteger('deleted');
+            $table->tinyInteger('live')->default(1);
+            $table->tinyInteger('deleted')->default(0);
             $table->timestamps();
         });
     }
