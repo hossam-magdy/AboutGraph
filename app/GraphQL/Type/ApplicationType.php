@@ -12,7 +12,7 @@ class ApplicationType extends GraphQLType
 {
     protected $attributes = [
         'name' => 'Application',
-        'description' => 'A user'
+        'description' => 'A shop'
     ];
 
     /*
@@ -26,11 +26,11 @@ class ApplicationType extends GraphQLType
         return [
             'id' => [
                 'type' => Type::nonNull(Type::int()),
-                'description' => 'The id of the user'
+                'description' => 'The id of the application'
             ],
             'name' => [
                 'type' => Type::string(),
-                'description' => 'The name of X'
+                'description' => 'The name of the application'
             ]
         ];
     }
