@@ -47,5 +47,4 @@ class AttributeType extends GraphQLType
         return $root->attributeGroup;
     }
 
-
 }

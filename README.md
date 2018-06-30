@@ -4,6 +4,7 @@
 ## Endpoint/Query Examples:
 `/graphql?query={attribute(attribute_group_level:"image",name:"shop"){id,name,attribute_group{name}}}`
 `/graphql?query={application(id:1002){id,name,url,logo_url,products(name:"s"){id,live,name,attributes{name}}}}`
+`/graphql?query={attribute_group(id:550){id,name,count_attributes,attributes(name:"aa"){id,name,attribute_group{frontend_name}}}}`
 
 
 ## Further Improvements:
