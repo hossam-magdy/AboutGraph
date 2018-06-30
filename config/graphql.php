@@ -125,10 +125,10 @@ return [
         'default' => [
             'query' => [
                 'application' => \App\GraphQL\Query\ApplicationQuery::class,
+                'product' => \App\GraphQL\Query\ProductQuery::class,
             ],
             'mutation' => [
-
-            ]
+            ],
         ]
     ],
 
@@ -182,6 +182,7 @@ return [
      */
     'types' => [
         'Application' => \App\GraphQL\Type\ApplicationType::class,
+        'Product' => \App\GraphQL\Type\ProductType::class,
     ],
 
     /*

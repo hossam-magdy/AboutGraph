@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    public $name;
+
     public function applications()
     {
         return $this->belongsToMany(Application::class);
