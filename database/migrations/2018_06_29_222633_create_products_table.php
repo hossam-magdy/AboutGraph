@@ -15,10 +15,9 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-//            $table->unsignedInteger('application_id');
             $table->string('name');
+            $table->tinyInteger('live');
             $table->timestamps();
-//            $table->foreign('application_id')->references('id')->on('applications');
         });
     }
 

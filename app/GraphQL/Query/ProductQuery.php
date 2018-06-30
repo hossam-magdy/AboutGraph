@@ -24,6 +24,7 @@ class ProductQuery extends Query
         return [
             'id' => ['name' => 'id', 'type' => Type::int()],
             'name' => ['name' => 'name', 'type' => Type::string()],
+            'live' => ['name' => 'url', 'type' => Type::boolean()],
             'attributes' => ['name' => 'attributes', 'type' => Type::listOf(GraphQL::type('Attribute'))],
         ];
     }
@@ -31,7 +32,7 @@ class ProductQuery extends Query
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
 //        dump('ResolvingProductQuery');
-        $query = Product::query();
+        $query = Product::query()->where('live', '=', 1);
 
         if (isset($args['id'])) {
             $query->where('id', $args['id'])->get();

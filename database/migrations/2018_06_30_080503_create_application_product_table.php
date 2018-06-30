@@ -13,7 +13,7 @@ class CreateApplicationProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('application_product', function (Blueprint $table) {
+        Schema::create('application_products', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('application_id');
             $table->unsignedInteger('product_id');
@@ -29,6 +29,6 @@ class CreateApplicationProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('application_product');
+        Schema::dropIfExists('application_products');
     }
 }
