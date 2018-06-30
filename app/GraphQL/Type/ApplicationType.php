@@ -36,7 +36,12 @@ class ApplicationType extends GraphQLType
             'url' => [
                 'type' => Type::string(),
             ],
-            'logo_url' => ['type' => Type::string()],
+            'logo_url' => [
+                'type' => Type::string(),
+            ],
+            'count_products' => [
+                'type' => Type::nonNull(Type::int()),
+            ],
             'products' => [
                 'type' => Type::listOf(GraphQL::type('Product')),
                 'args' => [
@@ -54,13 +59,14 @@ class ApplicationType extends GraphQLType
 
         if (isset($args['id'])) {
             return $products->where('id', $args['id']);
-        } else if (isset($args['name'])) {
+        }
+        if (isset($args['name'])) {
             return $products->filter(function (Product $product) use ($args) {
                 return stristr($product->name, $args['name']) !== false;
             });
-        } else {
-            return $products;
         }
+
+        return $products;
     }
 
 }

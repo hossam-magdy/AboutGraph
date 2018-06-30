@@ -31,7 +31,7 @@ class ProductQuery extends Query
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
 //        dump('ResolvingProductQuery');
-        $query = Product::query()->where('live', '=', 1);
+        $query = Product::query()->where('deleted', '=', 0);
 
         if (isset($args['id'])) {
             $query->where('id', $args['id'])->get();
