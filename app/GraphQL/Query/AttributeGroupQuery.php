@@ -34,13 +34,13 @@ class AttributeGroupQuery extends Query
         $query = AttributeGroup::query()->select(['attribute_groups.*']);
 
         if (isset($args['id'])) {
-            $query->where('attribute_groups.id', $args['id'])->get();
+            $query->where('attribute_groups.id', $args['id']);
         }
         if (isset($args['name'])) {
-            $query->where('attribute_groups.name', 'LIKE', '%'.$args['name'].'%')->get();
+            $query->where('attribute_groups.name', 'LIKE', '%'.$args['name'].'%');
         }
         if (isset($args['frontend_name'])) {
-            $query->where('attribute_groups.frontend_name', 'LIKE', '%'.$args['frontend_name'].'%')->get();
+            $query->where('attribute_groups.frontend_name', 'LIKE', '%'.$args['frontend_name'].'%');
         }
         $fields = $info->getFieldSelection(1);
         foreach ($fields as $field0 => $keys0) {
