@@ -49,6 +49,11 @@ class AttributeGroupQuery extends Query
             }
             if ($field0 === 'attributes') {
                 $query->with('attributes');
+                foreach ($keys0 as $field1 => $keys1) {
+                    if ($field1 === 'attribute_group') {
+                        $query->with('attributes.attributeGroup');
+                    }
+                }
             }
         }
 

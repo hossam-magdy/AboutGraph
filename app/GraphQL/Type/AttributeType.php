@@ -43,7 +43,7 @@ class AttributeType extends GraphQLType
     protected function resolveAttributeGroupField($root, $args)
     {
         // TODO: all fields/columns are queried from db regardless the requested/predefined fields
-//        dump('resolveAttributeGroupField', $root);
+//        dump('resolveAttributeGroupField', func_get_args());
         return $root->attributeGroup;
     }
 

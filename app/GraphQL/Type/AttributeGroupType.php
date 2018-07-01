@@ -15,7 +15,7 @@ class AttributeGroupType extends GraphQLType
 {
     protected $attributes = [
         'name' => 'Attribute Group',
-        'description' => 'An attribute'
+        'description' => 'An attribute group'
     ];
 
     /*
