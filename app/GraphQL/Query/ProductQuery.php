@@ -24,7 +24,7 @@ class ProductQuery extends Query
         return [
             'id' => ['name' => 'id', 'type' => Type::int()],
             'name' => ['name' => 'name', 'type' => Type::string()],
-            'live' => ['name' => 'url', 'type' => Type::boolean()],
+            'live' => ['name' => 'live', 'type' => Type::boolean()],
         ];
     }
 
