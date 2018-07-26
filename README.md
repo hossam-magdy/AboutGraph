@@ -1,12 +1,14 @@
 # About GraphQL
 
-Implement [GraphQL](https://graphql.org/) using relation-rich scheme, MySQL & Laravel.
+Implement [GraphQL](https://graphql.org/) using relation-rich db scheme, MySQL & Laravel.
 
 
 ## Local installation:
-- Update `.env` file
-- `php artisan migrate:fresh && php artisan db:seed`
-- `php artisan serve`
+- Clone, `cd` & `composer install`
+- Update `DB_*` vars in `.env`
+- Run (if required): `php artisan migrate:fresh && php artisan db:seed`
+- Run: `php artisan serve`
+- Explore: [http://localhost:8000/graphiql](http://localhost:8000/graphiql)
 
 
 ## Examples:
@@ -26,6 +28,7 @@ Implement [GraphQL](https://graphql.org/) using relation-rich scheme, MySQL & La
 - Use explicit arguments/conditions (`name_includes`, `name_is`, ... instead of `name`)
 - Use enum type for "attribute_group_level"
 - Implement general arguments (`first`, `last`, `limit`, `offset`, ...etc)
+- Create tests
 
 ## References:
 - http://webonyx.github.io/graphql-php/data-fetching/#solving-n1-problem
