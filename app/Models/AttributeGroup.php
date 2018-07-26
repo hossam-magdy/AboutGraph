@@ -13,6 +13,6 @@ class AttributeGroup extends Model
 {
     public function attributes()
     {
-        return $this->hasMany(Attribute::class);
+        return $this->hasMany(Attribute::class)->limit(Config::get('app.graphql_rel_limit'));
     }
 }

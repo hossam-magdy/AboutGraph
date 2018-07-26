@@ -13,11 +13,11 @@ class Product extends Model
 {
     public function applications()
     {
-        return $this->belongsToMany(Application::class, 'application_products');
+        return $this->belongsToMany(Application::class, 'application_products')->limit(Config::get('app.graphql_rel_limit'));
     }
 
     public function attributes()
     {
-        return $this->belongsToMany(Attribute::class, 'attribute_products');
+        return $this->belongsToMany(Attribute::class, 'attribute_products')->limit(Config::get('app.graphql_rel_limit'));
     }
 }

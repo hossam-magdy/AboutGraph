@@ -211,4 +211,6 @@ return [
 
     ],
 
+    'graphql_rel_limit' => env('GRAPHQL_REL_LIMIT', 1000),
+
 ];
